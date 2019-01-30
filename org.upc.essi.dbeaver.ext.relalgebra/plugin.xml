@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+
+<plugin>
+<!--
+    <extension point="org.jkiss.dbeaver.generic.meta">
+        <meta id="relationalAlgebraServer" class="org.upc.essi.dbeaver.ext.relalgebra.model.RelAlgebraMetaModel" 
+        	driverClass="org.postgresql.Driver"/>
+    </extension>
+-->  
+ 
+    <extension point="org.jkiss.dbeaver.dataSourceProvider">
+    	<datasource class="org.upc.essi.dbeaver.ext.relalgebra.RelAlgebraDataSourceProvider" description="Relational Algebra connector" id="relalgebra" label="Relational Algebra">
+    		<drivers managable="true">
+				<driver id="postgresql" label="PostgreSQL (Old)" class="org.postgresql.Driver" sampleURL="jdbc:postgresql://{host}[:{port}]/[{database}]" defaultPort="5432" webURL="http://jdbc.postgresql.org/" description="PostgreSQL standard JDBC driver. Replaced by PostgreSQL extension driver.">
+					<file type="jar" path="maven:/org.postgresql:postgresql:RELEASE[42.2.5]" bundle="!drivers.postgresql"/>
+                    <file type="license" path="drivers/postgresql/LICENSE.txt" bundle="drivers.postgresql"/>
+                    <file type="jar" path="drivers/postgresql/postgresql.jar" bundle="drivers.postgresql"/>
+                    <property name="loginTimeout" value="20"/>
+                    <property name="connectTimeout" value="20"/>
+                    <parameter name="query-get-active-db" value="select current_schema()"/>
+                    <parameter name="query-set-active-db" value="SET search_path = &quot;?&quot;"/>
+                    <parameter name="active-entity-type" value="schema"/>
+                    <parameter name="supports-scroll" value="true"/>
+                </driver>
+			</drivers>
+		</datasource>
+	</extension>
+    <!--
+    <extension point="org.jkiss.dbeaver.objectManager">
+        <manager class="org.upc.essi.dbeaver.ext.relalgebra.edit.RelAlgebraTableManager" objectType="org.upc.essi.dbeaver.ext.relalgebra.model.RelAlgebraTable"/>
+    </extension>
+    
+    <extension point="org.jkiss.dbeaver.sqlCommand">
+		<command
+        	id="org.upc.essi.dbeaver.ext.relalgebra.edit.RelAlgebraSQLManager">
+		</command>
+    </extension>
+    -->
+    
+
+</plugin>
